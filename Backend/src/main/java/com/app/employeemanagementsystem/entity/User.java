@@ -1,4 +1,4 @@
-package com.app.employeemanagementsystem.entity;
+package com.app.employeemanagementsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,12 +25,15 @@ public class User {
         private Boolean isVerified;
         private Long otp;
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<Attendance> attendances = new HashSet<>();
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<LeaveRequest> leaveRequests = new HashSet<>();
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<Salary> salaries = new HashSet<>();
 

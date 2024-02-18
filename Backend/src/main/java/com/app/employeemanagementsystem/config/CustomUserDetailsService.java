@@ -4,9 +4,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.app.employeemanagementsystem.dao.UserRepository;
-import com.app.employeemanagementsystem.entity.User;
+import com.app.employeemanagementsystem.model.User;
+import com.app.employeemanagementsystem.repository.UserRepository;
 
 
 @Service

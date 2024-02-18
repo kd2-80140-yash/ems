@@ -1,4 +1,4 @@
-package tda.darkarmy.employeemanagementsystem;
+package com.app.employeemanagementsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
