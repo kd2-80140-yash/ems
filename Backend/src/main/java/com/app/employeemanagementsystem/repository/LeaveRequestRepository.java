@@ -1,8 +1,8 @@
-package com.app.employeemanagementsystem.dao;
+package com.app.employeemanagementsystem.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.app.employeemanagementsystem.entity.LeaveRequest;
-import com.app.employeemanagementsystem.entity.User;
+import com.app.employeemanagementsystem.model.LeaveRequest;
+import com.app.employeemanagementsystem.model.User;
 
 import java.util.List;
 

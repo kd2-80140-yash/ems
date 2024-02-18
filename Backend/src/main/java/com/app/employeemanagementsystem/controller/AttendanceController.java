@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.app.employeemanagementsystem.entity.Attendance;
+import com.app.employeemanagementsystem.model.Attendance;
 import com.app.employeemanagementsystem.service.AttendanceService;
 
 import java.util.List;

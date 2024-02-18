@@ -4,8 +4,7 @@ package com.app.employeemanagementsystem.config;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.app.employeemanagementsystem.entity.User;
+import com.app.employeemanagementsystem.model.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;

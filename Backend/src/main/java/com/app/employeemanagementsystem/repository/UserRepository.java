@@ -1,7 +1,7 @@
-package com.app.employeemanagementsystem.dao;
+package com.app.employeemanagementsystem.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.app.employeemanagementsystem.entity.User;
+import com.app.employeemanagementsystem.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(String email);

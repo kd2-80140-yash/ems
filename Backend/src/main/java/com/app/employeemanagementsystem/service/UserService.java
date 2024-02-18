@@ -1,6 +1,15 @@
 package com.app.employeemanagementsystem.service;
 
 
+import com.app.employeemanagementsystem.config.JwtTokenProvider;
+import com.app.employeemanagementsystem.dto.LoginRequest;
+import com.app.employeemanagementsystem.dto.LoginResponse;
+import com.app.employeemanagementsystem.dto.PasswordResetRequest;
+import com.app.employeemanagementsystem.dto.UserDto;
+import com.app.employeemanagementsystem.exception.ResourceNotFoundException;
+import com.app.employeemanagementsystem.exception.UserAlreadyExistsException;
+import com.app.employeemanagementsystem.model.User;
+import com.app.employeemanagementsystem.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,16 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.app.employeemanagementsystem.config.JwtTokenProvider;
-import com.app.employeemanagementsystem.dao.UserRepository;
-import com.app.employeemanagementsystem.dto.LoginRequest;
-import com.app.employeemanagementsystem.dto.LoginResponse;
-import com.app.employeemanagementsystem.dto.PasswordResetRequest;
-import com.app.employeemanagementsystem.dto.UserDto;
-import com.app.employeemanagementsystem.entity.User;
-import com.app.employeemanagementsystem.exception.ResourceNotFoundException;
-import com.app.employeemanagementsystem.exception.UserAlreadyExistsException;
 
 import java.util.List;
 import java.util.Optional;

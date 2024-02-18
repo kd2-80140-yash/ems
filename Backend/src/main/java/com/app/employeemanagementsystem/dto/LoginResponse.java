@@ -1,6 +1,6 @@
 package com.app.employeemanagementsystem.dto;
 
-import com.app.employeemanagementsystem.entity.User;
+import com.app.employeemanagementsystem.model.User;
 
 public class LoginResponse {
     private String token;
