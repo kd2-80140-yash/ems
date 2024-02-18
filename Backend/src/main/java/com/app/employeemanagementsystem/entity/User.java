@@ -1,12 +1,19 @@
 package com.app.employeemanagementsystem.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -25,12 +32,15 @@ public class User {
         private Boolean isVerified;
         private Long otp;
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<Attendance> attendances = new HashSet<>();
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<LeaveRequest> leaveRequests = new HashSet<>();
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<Salary> salaries = new HashSet<>();
 
