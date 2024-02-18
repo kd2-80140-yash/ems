@@ -241,6 +241,7 @@ export default function Register({ handleHaveAccount }) {
                   >
                     <MenuItem value={"EMPLOYEE"}>Employee</MenuItem>
                     <MenuItem value={"MANAGER"}>Manager</MenuItem>
+                    <MenuItem value={"ADMIN"}>Admin</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

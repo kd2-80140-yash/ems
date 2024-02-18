@@ -1,11 +1,12 @@
 package com.app.employeemanagementsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.app.employeemanagementsystem.exception.ResourceNotFoundException;
 import com.app.employeemanagementsystem.entity.Attendance;
 import com.app.employeemanagementsystem.entity.User;
-import com.app.employeemanagementsystem.repository.AttendanceRepository;
+import com.app.employeemanagementsystem.dao.AttendanceRepository;
 
 import java.util.List;
 
