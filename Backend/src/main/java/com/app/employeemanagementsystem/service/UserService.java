@@ -59,6 +59,10 @@ public class UserService {
         user.setAddress(userDto.getAddress());
         user.setVerified(userDto.getVerified());
 
+        if(userDto.getRole().equalsIgnoreCase("ADMIN")){
+            user.setAdminVerified(true);
+        }
+
         Long otp = new Random().nextLong(9999 - 1000 + 1) + 1000;
         user.setOtp(otp);
 
@@ -71,6 +75,7 @@ public class UserService {
 
         if(user==null) throw new ResourceNotFoundException("User with given email not found.");
         if(!user.getVerified()) throw new ResourceNotFoundException("User is not verified yet.");
+        if(!user.getAdminVerified()) throw new ResourceNotFoundException("User is not verified by admin yet.");
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -82,7 +87,6 @@ public class UserService {
 
     public String verifyOtp(String email, Long otp){
         User user =  userRepository.findByEmail(email);
-        System.out.println(user.getOtp()+" "+otp);
         if(user.getOtp().longValue()==otp.longValue()){
             user.setVerified(true);
             userRepository.save(user);
@@ -90,6 +94,13 @@ public class UserService {
         }else{
             return "Invalid otp";
         }
+    }
+
+    public String verifyUser(String email){
+        User user =  userRepository.findByEmail(email);
+        user.setAdminVerified(true);
+        userRepository.save(user);
+        return "Employee verified";
     }
 
     public User updateUser(UserDto userDto, Long id){
@@ -113,15 +124,15 @@ public class UserService {
         Long otp = new Random().nextLong(9999 - 1000 + 1) + 1000;
         user.setOtp(otp);
 
-        mailSenderService.send(user, otp.toString());
+        mailSenderService.sendForPasswordReset(user, otp.toString());
         user.setNewPassword(passwordEncoder.encode(resetRequest.getPassword()));
+        //user.setPassword(passwordEncoder.encode(resetRequest.getPassword()));
         return userRepository.save(user);
     }
 
 
     public User getLoggedInUser(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("User Details:  "+userDetails.getUsername());
         return userRepository.findByEmail(userDetails.getUsername());
     }
 

@@ -24,6 +24,7 @@ public class User {
         private String address;
         private Boolean isVerified;
         private Long otp;
+        private Boolean adminVerified=false;
 
         @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -36,6 +37,14 @@ public class User {
         @JsonIgnore
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
         private Set<Salary> salaries = new HashSet<>();
+
+        public Boolean getAdminVerified() {
+                return adminVerified;
+        }
+
+        public void setAdminVerified(Boolean adminVerified) {
+                this.adminVerified = adminVerified;
+        }
 
         public User() {
         }
